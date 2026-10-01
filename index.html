@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>이상민 포트폴리오</title>
+
+    <!-- CSS 연결 -->
+    <style>
+            
+:root {
+    /* 주색 / 보조색 / 강조색 */
+    --primary: #457272;
+    --secondary: #000000;
+    --accent: #ffffff;
+}
+
+/* 기본 설정 */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* 헤더 */
+header {
+    padding: 30px 10%;
+    
+    background: linear-gradient(
+        to top,
+
+        #748ec5 0%,
+        #99aed9 100%
+    );
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    /* 위쪽: 진함 → 아래쪽: 밝음 */
+    background: linear-gradient(
+        to bottom,
+
+        #88a1d6 0%,
+        #ffffff 100%
+    );
+
+    color: var(--secondary);
+    font-family: Arial, sans-serif;
+}
+
+
+footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+
+    text-align: center;
+    padding: 20px;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 로고 */
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* 메뉴 */
+nav a {
+    margin-left: 30px;
+
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* 메인 */
+
+
+/* 제목 */
+h1 {
+    color: white;
+    font-size: 56px;
+    margin-bottom: 20px;
+}
+
+/* 설명 */
+p {
+    font-size: 18px;
+    line-height: 140%;
+}
+#projects {
+    align-items: flex-start !important; /* 내부 요소를 왼쪽 끝으로 정렬 */
+    text-align: center !important;         /* 텍스트 왼쪽 정렬 */
+    /*padding: 30px 10% 100px 10%;*/
+}
+
+/* Projects 제목 */
+#projects h2 {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 50px;
+    text-align: center !important;
+}
+
+#projects h3 {
+    color: white;
+    font-size: 25px;
+    padding : 10px 0;
+    text-align: center !important;
+}
+
+#projects h4 {
+    color: white;
+    font-size: 20px;
+    
+    text-align: center !important;
+}
+#projects p {
+    color: black;
+    font-size: 15px;
+    padding : 10px 0;
+    text-align: center !important;
+}
+
+/* 프로젝트들을 담는 영역 */
+.project-list {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+/* 프로젝트 하나 */
+.project {
+    padding: 30px;
+
+    background-color: rgba(17, 24, 39, 0.7);
+
+    border: 1px solid rgba(156, 163, 175, 0.2);
+    border-radius: 12px;
+}
+
+/* 프로젝트 제목 */
+
+
+#skill{
+    /*padding: 30px 10%;*/
+    
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center; /* '기술' 제목 및 컨텐츠 전체를 왼쪽 정렬 (중앙 배치를 원하시면 center로 변경) */
+}
+
+#skill h2{
+    color: white;
+    font-size: 40px;
+    margin-bottom: 22px;
+}
+/* 기술 전체 카드 */
+.skills-card {
+    background-color: #99aed9;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 한 줄 래퍼 (카테고리 + 배지) */
+.skill-row {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    gap: 16px;           /* 카테고리와 배지 사이 간격 */
+}
+
+/* 왼쪽 카테고리 영역 */
+.skill-category {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.skill-category img {
+    width: 24px !important;
+    height: 24px !important;
+    display: block;
+}
+
+.skill-category span {
+    color: #000000;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* 오른쪽 배지 영역 */
+.skill-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill-group img {
+    height: 28px !important;
+    width: auto !important;
+    display: block;
+}
+
+
+/* 메인 영역 레이아웃 */
+main {
+    padding: 60px 10%;
+}
+
+/* 왼쪽 텍스트와 오른쪽 소개 박스를 가로 배치 */
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* 상단 정렬 */
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+/* 2. 왼쪽 텍스트 영역 너비 및 단어 끊김 방지 */
+.hero-text {
+    flex: 1.2; /* 왼쪽 텍스트 영역을 조금 더 넓게 설정 */
+    text-align: left;
+    word-break: keep-all; /* 단어가 중간에 잘리지 않고 단어 단위로 줄바꿈 되도록 설정 */
+}
+
+.hero-text p {
+    font-size: 18px;
+    line-height: 140%;
+    margin-bottom: 25px;
+    word-break: keep-all; /* 문단 단어 보호 */
+}
+
+.hero-text h1 {
+    margin-top: 0;
+    line-height: 140%;
+    font-size: 48px;
+}
+
+/* 오른쪽 소개 섹션 */
+#about {
+    flex: 1.6;
+    padding: 0;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* 카드가 너무 좁아지지 않도록 최소 너비 보장 */
+    width: 100%;
+    margin-bottom: 80px;
+    align-items: flex-start;
+}
+
+#about h2 {
+    color: white;
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+
+.contact-card {
+    background-color: #99aed9; /* 어두운 반투명 배경 (원하시면 #9aa5bb 등으로 변경 가능) */
+    border: 1px solid rgba(92, 99, 172, 0.2); /* 얇은 테두리 */
+    border-radius: 16px;                     /* 모서리 라운딩 */
+    padding: 24px 32px;                      /* 블록 내부 여백 */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;                               /* 각 항목(줄) 사이 간격 */
+    width: 100%;
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);/* 은은한 그림자 효과 */
+}
+
+/* 4. 소개 항목 정렬 및 라벨/값 들여쓰기 깔끔하게 맞추기 */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+/* 아이콘 크기 고정 */
+.contact-item img {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0; /* 아이콘이 찌그러지지 않도록 보호 */
+}
+
+/* '이름', '연락처', '이메일', 'GitHub' 라벨 줄바꿈 방지 및 너비 통일 */
+.contact-item .label {
+    font-weight: bold;
+    white-space: nowrap; /* '이메일' 글자 잘림 방지 */
+    min-width: 60px;     /* 라벨 너비를 동일하게 맞춰 콜론(:) 위치 정렬 */
+    flex-shrink: 0;
+}
+
+/* 값(실제 내용) 영역 설정 */
+.contact-item .value {
+    white-space: nowrap; /* 내용 줄바꿈 방지 (필요 시) */
+    word-break: break-all;
+}
+
+/* 화면이 좁아질 때(모바일) 수직 배치로 자동 전환 */
+/* 모바일 및 화면 폭이 좁을 때 (768px 이하) */
+@media (max-width: 768px) {
+    main {
+        padding: 30px 5%;
+    }
+
+    /* 가로 배치를 세로 1열로 변경 */
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .hero-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    #about {
+        width: 100%;
+        align-items: center;
+    }
+
+    #about h2 {
+        text-align: center;
+    }
+
+    header, nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 0 10px;
+    }
+}
+#about .contact p {
+    margin: 3px 0 !important;      /* 줄과 줄 사이 위아래 간격을 3px로 강제 축소 */
+    line-height: 1.2 !important;   /* 기존 1.7 줄간격을 1.2로 축소 */
+    display: flex !important;
+    align-items: center !important; /* 아이콘과 텍스트 높이 중앙 정렬 */
+    gap: 8px !important;           /* 아이콘과 텍스트 사이 가로 간격 */
+}
+
+
+
+
+/* 아이콘 크기 고정 및 마진 제거 */
+#about .contact img {
+    margin: 0 !important;
+    vertical-align: middle;
+}
+
+/* 소개 섹션 카드 스타일 */
+
+
+/* 카드 내부 각 줄 정렬 */
+.contact-card p {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    text-align: left;
+}
+
+/* 카드 내 아이콘 크기 고정 */
+.contact-card img {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+/* 강조색 */
+.accent {
+    color: var(--accent);
+}
+
+/* 버튼 */
+.button {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 30px;
+    padding: 12px 24px;
+
+    color: white;
+    background-color: var(--secondary);
+
+    text-decoration: none;
+    
+    border-radius: 8px;
+}
+
+.button:hover {
+    opacity: 0.2;
+}
+.top-button {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--accent);
+    color: rgb(0, 0, 0);
+    border : 1px solid rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 50%;
+
+    transition: transform 0.2s;
+}
+
+.top-button:hover {
+    transform: translateY(-5px);
+}
+.contact img {
+    width: 24px;
+    height: 24px;
+}
+.arrow img {
+    width: 36px;
+    height: 36px;
+}
+.project-card {
+    z-index: 1;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+
+    background: #99aed9;
+    border-radius: 18px;
+    
+    text-align: center; /* 카드 내부 텍스트는 보기 좋게 중앙 정렬 (원하시면 left로 변경 가능) */
+    cursor: pointer;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+.project-tag {
+    position: absolute;
+    top: 20px;   /* 카드 위쪽에서 20px 간격 */
+    left: 20px;  /* 카드 왼쪽에서 20px 간격 */
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000; /* 글자 색상 (원하시는 색상으로 변경 가능) */
+}
+#projects {
+    scroll-margin-top: 0px; /* 고정 헤더나 상단 메뉴 높이만큼 스크롤 위치를 아래로 밀어줍니다 */
+    padding: 100px 10% 120px 10%; /* 위아래여백을 넉넉하게 지정 */
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center !important; /* 내부 요소 수평 중앙 정렬 */
+    text-align: center !important;  /* 텍스트 중앙 정렬 */
+}
+
+/* 프로젝트 제목 중앙 정렬 */
+#projects {
+    padding: 20px 10% 100px 10%; /* 위쪽 패딩을 100px -> 20px로 축소 */
+    scroll-margin-top: 0;      /* 이동 시 스크롤 위치 유지 */
+}
+
+/* 3. 프로젝트 제목(h2)의 위쪽 여백 제거 */
+#projects h2 {
+    margin-top: 0;               /* h2 제목의 기본 위쪽 마진을 0으로 설정 */
+    color: white;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+/* 클릭된 프로젝트 */
+.project-card.active {
+    position: relative;
+    z-index: 20;
+
+    transform: scale(1.05);
+}
+
+
+.project-detail {
+    position: relative;
+
+    width: 70%;
+    max-width: 800px;
+    max-height: 80vh;
+
+    padding: 40px;
+
+    background: white;
+    border-radius: 20px;
+
+    overflow-y: auto;
+
+    transform: scale(0.9);
+    transition: 0.3s;
+}
+.project-detail h1{
+    color: black;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.project-detail img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* 어두운 배경 */
+#overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(176, 165, 165, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.3s;
+
+    z-index: 100;
+}
+
+/* overlay 활성화 */
+#overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#overlay.active .project-detail {
+    transform: scale(1);
+}
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    border: none;
+    background: none;
+
+    font-size: 30px;
+    cursor: pointer;
+}
+
+    </style>
+    
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">이상민 포트폴리오</div>
+
+            <div>
+                <a href="#about">소개</a>
+                <a href="#projects">프로젝트</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <!-- 상단 히어로 + 소개 가로 배치 컨테이너 -->
+    <div class="hero-container">
+        
+        <!-- 왼쪽: 메인 타이틀 & 설명 & 버튼 -->
+        <div class="hero-text">
+            <h1>
+                <span class="accent"><b>이상민</span><br> 포트폴리오</b>
+            </h1>
+            <p>
+                안녕하세요. <br>
+                저의 관심사는 <b>컴퓨터 그래픽스</b>입니다. <br>
+                아직까지는 현재는 전공 공부에 전념하고 있으나,<br>이후에 프로젝트를 할 생각을 가지고 있습니다.
+            </p>
+        </div>
+
+        <!-- 오른쪽: 소개(Contact) 영역 -->
+        <section id="about">
+            <h2>소개</h2>
+            <div class="contact-card">
+                <div class="contact-item">
+                    <img src="images/profile.png" alt="이름">
+                    <span class="label">이름</span>
+                    : 이상민
+                </div>
+                <div class="contact-item">
+                    <img src="images/tel.png" alt="연락처">
+                    <span class="label">연락처</span>
+                    : 010-6887-1958
+                </div>
+                <div class="contact-item">
+                    <a href="mailto:sml030624@gmail.com"><img src="images/mail.png" alt="이메일"></a>
+                    <span class="label">이메일</span>
+                    : sml030624@gmail.com
+                </div>
+                <div class="contact-item">
+                    <a href="https://github.com/lsm030624" target="_blank"><img src="images/github.png" alt="GitHub"></a>
+                    <span class="label">GitHub</span>
+                    : github.com/lsm030624
+                </div>
+                <div class="contact-item">
+                    <img src="images/favorite.png" alt="관심분야">
+                    <b>관심분야</b> : 컴퓨터 그래픽스, 렌더링
+                </div>
+                <div class="contact-item">
+                    <img src="images/study.png" alt="공부 분야">
+                    <b>공부분야</b>: 컴퓨터 그래픽스, 자료구조
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 하단 프로젝트 섹션 -->
+        <section id="projects">
+            <h2>프로젝트</h2>
+            <div class="project-card" onclick="openProject()">
+                <h3>원, 박스와 친해지기</h3>
+                <div class="project-tag">수업과제 / 2026.09 / 개인</div>
+                <p><b>Python을 이용한 PPM 파일 제작</b></p>
+            </div>
+        </section>
+    </main>
+
+
+        <!-- 프로젝트 상세 화면 -->
+        <div id="overlay" onclick="closeProject(event)">
+            <div class="project-detail" onclick="event.stopPropagation()">
+
+                <button class="close-btn" onclick="closeProject(event)">×</button>
+
+                <h1>원, 박스와 친해지기</h1>
+
+                <img src="images/project_1.png" alt="Project 1">
+
+                <h2>프로젝트 소개</h2>
+                <p>
+                    수업과제로 진행한 Python 코드로 PPM 파일을 제작하는 프로젝트입니다. <br>
+                    5개의 원과 5개의 박스를 그리는 기능을 구현하였으며, 각 도형별로 크기와 색상을 달리하였습니다.
+                </p>
+
+                <h2>사용 기술 및 도구</h2>
+                <p>Python</p>
+
+               
+                <h2>프로젝트 진행 과정</h2>
+                <img src="images/project_1_old.png" alt="Project 1 old">
+                <h3>초기 과정</h3>
+
+                <p> 처음에는 단순히 주어진 과제만을 수행하기 위해 디자인을 생각하지 않고 제작하였습니다.<br>
+                    하지만 시간이 지나면서 더 나은 디자인을 생각해 보았고, 따라서 맨 처음의 결과로 수정하기로 마음 먹었습니다.
+                </p>
+            </div>
+        </div>
+        
+    </main>
+<script>
+
+function openProject() {
+    document.getElementById("overlay").classList.add("active");
+}
+
+function closeProject(event) {
+    if (event.target === document.getElementById("overlay") ||
+        event.target.classList.contains("close-btn")) {
+        document.getElementById("overlay").classList.remove("active");
+    }
+}
+</script>
+
+</body>
+
+<footer>
+    <p>© 2026 이상민 All rights reserved.</p>
+    <a href="#" class="top-button">
+        <div class="arrow"><img src="images/arrow.png" alt="up"></div></div>
+    </a>
+</footer>
+</html>
