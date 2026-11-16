@@ -188,17 +188,18 @@
             nav { flex-direction: column; gap: 10px; }
             nav a { margin: 0 10px; }
         }
+        .contact-item a {
+            display: inline-flex;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+        
+        .contact-item a:hover,
+        .contact-item a:focus-visible {
+            transform: scale(1.2);
+        }
     </style>
-    .contact-item a {
-        display: inline-flex;
-        flex-shrink: 0;
-        transition: transform 0.2s ease;
-    }
     
-    .contact-item a:hover,
-    .contact-item a:focus-visible {
-        transform: scale(1.2);
-    }
 </head>
 
 <body>
