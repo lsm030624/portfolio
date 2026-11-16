@@ -188,18 +188,22 @@
             nav { flex-direction: column; gap: 10px; }
             nav a { margin: 0 10px; }
         }
+
+        /* 메일 및 GitHub 아이콘 확대 */
         .contact-item a {
             display: inline-flex;
             flex-shrink: 0;
             transition: transform 0.2s ease;
         }
-        
         .contact-item a:hover,
         .contact-item a:focus-visible {
             transform: scale(1.2);
         }
+        @media (prefers-reduced-motion: reduce) {
+            .contact-item a { transition: none; }
+        }
     </style>
-    
+
 </head>
 
 <body>
