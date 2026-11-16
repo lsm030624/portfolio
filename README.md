@@ -1,3 +1,3 @@
-# my_portfolio
+# portfolio
 
 https://lsm030624.github.io/portfolio/
