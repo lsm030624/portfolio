@@ -90,13 +90,21 @@
         #projects h2 { color: var(--accent); font-size: 40px; margin: 0 0 30px; }
         #projects h3 { color: var(--accent); font-size: 25px; padding: 10px 0; }
         #projects p { font-size: 15px; padding: 10px 0; }
+        .project-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 100%;
+        }
         .project-card {
             position: relative;
             z-index: 1;
             width: 300px;
+            max-width: 100%;
             height: 300px;
-            padding: 20px;
-            margin: 0 auto;
+            padding: 44px 20px 20px;
+            margin: 0;
             background: var(--card);
             border-radius: 18px;
             cursor: pointer;
@@ -112,7 +120,7 @@
         }
 
         /* 프로젝트 상세 창 */
-        #overlay {
+        .overlay {
             position: fixed;
             inset: 0;
             z-index: 100;
@@ -124,7 +132,7 @@
             visibility: hidden;
             transition: 0.3s;
         }
-        #overlay.active { opacity: 1; visibility: visible; }
+        .overlay.active { opacity: 1; visibility: visible; }
         .project-detail {
             position: relative;
             width: 70%;
@@ -137,7 +145,7 @@
             transform: scale(0.9);
             transition: 0.3s;
         }
-        #overlay.active .project-detail { transform: scale(1); }
+        .overlay.active .project-detail { transform: scale(1); }
         .project-detail h1 { color: var(--text); font-size: 30px; }
         .project-detail img { width: 100%; max-height: 400px; object-fit: contain; }
         .close-btn {
@@ -246,14 +254,21 @@
     </div>
 <section id="projects">
             <h2>대표 프로젝트</h2>
-            <div class="project-card" onclick="openProject()">
+            <div class="project-list">
+            <div class="project-card" onclick="openProject(1)" role="button" tabindex="0" onkeydown="activateProject(event, 1)">
                 <h3>원, 박스와 친해지기</h3>
                 <div class="project-tag">수업과제 / 2026.09 / 개인</div>
                 <p><b>Python을 이용한 PPM 파일 제작</b></p>
             </div>
+            <div class="project-card" onclick="openProject(2)" role="button" tabindex="0" onkeydown="activateProject(event, 2)">
+                <h3>오픈소스 FXAA 바꿔보기</h3>
+                <div class="project-tag">수업과제 / FXAA</div>
+                <p><b>이미지 비교 및 FXAA 매개변수 조절</b></p>
+            </div>
+            </div>
         </section>
     </main>
-<div id="overlay" onclick="closeProject(event)">
+<div id="project-1" class="overlay" onclick="closeProject(event)">
             <div class="project-detail" onclick="event.stopPropagation()">
 
                 <button class="close-btn" onclick="closeProject(event)">×</button>
@@ -281,9 +296,7 @@
             </div>
         </div>
 
-<script>
-
-<div id="overlay" onclick="closeProject(event)">
+<div id="project-2" class="overlay" onclick="closeProject(event)">
             <div class="project-detail" onclick="event.stopPropagation()">
 
                 <button class="close-btn" onclick="closeProject(event)">×</button>
@@ -315,17 +328,39 @@
         </div>
 
 <script>
-    
-function openProject() {
-    document.getElementById("overlay").classList.add("active");
+let projectTrigger = null;
+
+function openProject(number) {
+    const overlay = document.getElementById('project-' + number);
+    if (!overlay) return;
+    document.querySelectorAll('.overlay.active').forEach(item => item.classList.remove('active'));
+    projectTrigger = document.activeElement;
+    overlay.classList.add('active');
+    overlay.querySelector('.project-detail').scrollTop = 0;
+    overlay.querySelector('.close-btn').focus();
 }
 
 function closeProject(event) {
-    if (event.target === document.getElementById("overlay") ||
-        event.target.classList.contains("close-btn")) {
-        document.getElementById("overlay").classList.remove("active");
+    if (!event.target.matches('.overlay, .close-btn')) return;
+    event.target.closest('.overlay').classList.remove('active');
+    if (projectTrigger) projectTrigger.focus();
+}
+
+function activateProject(event, number) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openProject(number);
     }
 }
+
+document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    const overlay = document.querySelector('.overlay.active');
+    if (overlay) {
+        overlay.classList.remove('active');
+        if (projectTrigger) projectTrigger.focus();
+    }
+});
 </script>
 
 <footer>
