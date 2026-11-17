@@ -202,6 +202,83 @@
         @media (prefers-reduced-motion: reduce) {
             .contact-item a { transition: none; }
         }
+    /* 왼쪽: 인사말과 소개 / 오른쪽: 프로젝트 */
+    main {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+        align-items: start;
+        gap: 60px;
+    }
+    
+    .hero-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 40px;
+        min-width: 0;
+        margin-bottom: 0;
+    }
+    
+    .hero-text {
+        flex: none;
+    }
+    
+    #about {
+        flex: none;
+        margin-bottom: 0;
+    }
+    
+    #projects {
+        min-width: 0;
+        min-height: auto;
+        padding: 0 0 60px;
+    }
+    
+    .project-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 30px;
+    }
+    
+    .project-card {
+        width: 100%;
+    }
+    
+    .contact-item {
+        overflow-wrap: anywhere;
+    }
+    
+    /* 태블릿: 프로젝트 카드를 한 열로 표시 */
+    @media (min-width: 769px) and (max-width: 1200px) {
+        main {
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 30px;
+        }
+    
+        .project-list {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    /* 모바일: 인사말 → 소개 → 프로젝트 */
+    @media (max-width: 768px) {
+        main {
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+    
+        .hero-container {
+            gap: 30px;
+        }
+    
+        .contact-card {
+            padding: 24px 16px;
+        }
+    
+        .project-list {
+            grid-template-columns: 1fr;
+            max-width: 360px;
+        }
+    }
     </style>
 
 </head>
